@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
-import zipfile
 import tempfile
 import shutil
 import os
-import netifaces
-import ipaddress
 import random
 import base64
 import http.server
@@ -69,21 +66,6 @@ parser.add_argument(
 port = 80
 reverse  = 1337
 def main(args):
-
-    # Parse the supplied interface
-    # This is done so the maldoc knows what to reach out to.
-    # try:
-    #     serve_host = ipaddress.IPv4Address(args.interface)
-    # except ipaddress.AddressValueError:
-    #     try:
-    #         serve_host = netifaces.ifaddresses(args.interface)[netifaces.AF_INET][0][
-    #             "addr"
-    #         ]
-    #     except ValueError:
-    #         print(
-    #             "[!] error detering http hosting address. did you provide an interface or ip?"
-    #         )
-    #         exit()
     serve_host = args.url
     # Copy the Microsoft Word skeleton into a temporary staging folder
     doc_suffix = "doc"
