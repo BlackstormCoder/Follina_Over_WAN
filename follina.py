@@ -32,7 +32,7 @@ parser.add_argument(
     "--command",
     "-c",
     help="command to run on the target",
-    required=True
+    
 )
 
 parser.add_argument(
